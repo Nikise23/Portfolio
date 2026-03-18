@@ -1,18 +1,16 @@
 function Contact() {
   return (
-    <section id="contact" className="py-20 px-4">
+    <section id="contact" className="py-20 px-4 bg-dark-bg">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">
-          <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-            Contacto
-          </span>
+        <h2 className="font-pixel text-neon-green text-2xl md:text-3xl mb-12 glow-green">
+          CONTACTO
         </h2>
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
           <a
             href="https://github.com/Nikise23"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 bg-dark-secondary hover:bg-slate-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 border border-gray-700 hover:border-blue-500/50 flex items-center gap-3"
+            className="font-retro px-8 py-4 bg-dark-card text-neon-green border-2 border-neon-green rounded-none transition-transform duration-150 hover:translate-y-0.5 hover:bg-neon-green hover:text-black flex items-center gap-3"
           >
             <svg
               className="w-6 h-6"
@@ -30,7 +28,7 @@ function Contact() {
           </a>
           <a
             href="#"
-            className="px-8 py-4 bg-dark-secondary hover:bg-slate-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 border border-gray-700 hover:border-blue-500/50 flex items-center gap-3 opacity-50 cursor-not-allowed"
+            className="font-retro px-8 py-4 bg-dark-card text-neon-cyan border-2 border-neon-cyan rounded-none flex items-center gap-3 opacity-50 cursor-not-allowed"
             onClick={(e) => e.preventDefault()}
           >
             <svg
@@ -45,7 +43,7 @@ function Contact() {
           </a>
           <a
             href="#"
-            className="px-8 py-4 bg-dark-secondary hover:bg-slate-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 border border-gray-700 hover:border-blue-500/50 flex items-center gap-3 opacity-50 cursor-not-allowed"
+            className="font-retro px-8 py-4 bg-dark-card text-neon-cyan border-2 border-neon-cyan rounded-none flex items-center gap-3 opacity-50 cursor-not-allowed"
             onClick={(e) => e.preventDefault()}
           >
             <svg
@@ -65,6 +63,48 @@ function Contact() {
             Email
           </a>
         </div>
+
+        <form
+          className="mt-6 text-left bg-dark-card border-2 border-neon-green rounded-none px-6 py-8 max-w-2xl mx-auto pixel-border"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <div className="mb-6">
+            <label className="block font-pixel text-[10px] text-neon-green mb-2 tracking-[0.25em]">
+              NOMBRE
+            </label>
+            <input
+              type="text"
+              className="w-full bg-dark-card border-2 border-neon-green text-neon-green font-retro text-sm px-3 py-2 rounded-none placeholder:text-neon-green/50 focus:outline-none focus:ring-0 focus:border-neon-cyan shadow-[0_0_10px_rgba(0,255,65,0.4)]"
+              placeholder="INGRESA TU NOMBRE"
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block font-pixel text-[10px] text-neon-green mb-2 tracking-[0.25em]">
+              EMAIL
+            </label>
+            <input
+              type="email"
+              className="w-full bg-dark-card border-2 border-neon-green text-neon-green font-retro text-sm px-3 py-2 rounded-none placeholder:text-neon-green/50 focus:outline-none focus:ring-0 focus:border-neon-cyan shadow-[0_0_10px_rgba(0,255,65,0.4)]"
+              placeholder="INGRESA TU EMAIL"
+            />
+          </div>
+          <div className="mb-8">
+            <label className="block font-pixel text-[10px] text-neon-green mb-2 tracking-[0.25em]">
+              MENSAJE
+            </label>
+            <textarea
+              rows="4"
+              className="w-full bg-dark-card border-2 border-neon-green text-neon-green font-retro text-sm px-3 py-2 rounded-none placeholder:text-neon-green/50 focus:outline-none focus:ring-0 focus:border-neon-cyan resize-none shadow-[0_0_10px_rgba(0,255,65,0.4)]"
+              placeholder="ESCRIBE TU MENSAJE"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full font-retro text-xs px-8 py-3 border-2 border-neon-green text-neon-green bg-transparent rounded-none tracking-[0.3em] hover:bg-neon-green hover:text-black transition-transform duration-150 hover:translate-y-0.5"
+          >
+            ENVIAR MENSAJE
+          </button>
+        </form>
       </div>
     </section>
   )

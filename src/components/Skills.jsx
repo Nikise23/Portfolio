@@ -19,29 +19,45 @@ function Skills() {
   ]
 
   return (
-    <section id="skills" className="py-20 px-4 bg-dark-secondary/50">
+    <section id="skills" className="py-20 px-4 bg-dark-bg">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-          <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-            Stack Tecnológico
-          </span>
+        <h2 className="font-pixel text-neon-green text-2xl md:text-3xl text-center mb-12 glow-green">
+          STACK TECNOLÓGICO
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="bg-dark-bg rounded-xl p-6 border border-gray-800 hover:border-blue-500/50 transition-all duration-300"
+              className="bg-dark-card p-6 border-2 border-neon-green rounded-none pixel-border"
             >
-              <h3 className="text-xl font-bold mb-4 text-blue-400">
+              <h3 className="font-pixel text-xs text-neon-cyan mb-6 glow-cyan">
                 {category.title}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <li
                     key={skillIndex}
-                    className="text-gray-300 flex items-center before:content-['▹'] before:text-blue-400 before:mr-2 before:text-sm"
+                    className="space-y-2"
                   >
-                    {skill}
+                    <div className="flex items-center justify-between">
+                      <span className="font-pixel text-[9px] text-neon-green tracking-[0.25em]">
+                        {skill.toUpperCase()}
+                      </span>
+                      <span className="font-retro text-[9px] text-neon-cyan">
+                        HP
+                      </span>
+                    </div>
+                    <div className="w-full bg-black/70 border-2 border-neon-green overflow-hidden rounded-none">
+                      <div className="flex gap-1 px-1 py-1">
+                        {Array.from({ length: 10 }).map((_, i) => (
+                          // eslint-disable-next-line react/no-array-index-key
+                          <div
+                            key={i}
+                            className="flex-1 h-3 bg-neon-green"
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ul>

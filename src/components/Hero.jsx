@@ -1,38 +1,75 @@
+import { useEffect, useState } from 'react'
+import { useTypewriter } from '../hooks/useTypewriter'
+
 function Hero() {
+  const [isGlitching, setIsGlitching] = useState(false)
+  const subtitleText = 'Full Stack Developer — Backend Focus'
+  const { text } = useTypewriter(subtitleText, 60)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsGlitching(true)
+      const timeout = setTimeout(() => setIsGlitching(false), 600)
+      return () => clearTimeout(timeout)
+    }, 5000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
   const scrollToProjects = () => {
-    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })
+    const el = document.getElementById('projects')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+    <section
+      id="hero"
+      className="min-h-[80vh] md:min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-b from-black via-dark-bg to-black"
+    >
+      <div className="max-w-4xl mx-auto text-center space-y-8">
+        <h1
+          className={`font-pixel text-neon-green text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug glow-green ${
+            isGlitching ? 'glitch-once' : ''
+          }`}
+          style={{ textShadow: '0 0 10px #00ff41, 0 0 30px #00ff41' }}
+        >
           Nicolás Fernández
         </h1>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-gray-300">
-          Full Stack Developer — Backend Focus
+
+        <h2 className="font-retro text-neon-cyan text-xl md:text-2xl lg:text-3xl tracking-wide">
+          {text}
+          <span className="typewriter-cursor">_</span>
         </h2>
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-          Desarrollador orientado a backend con experiencia construyendo sistemas web completos para gestión médica, portales de contenido y aplicaciones administrativas.
+
+        <p className="font-retro text-base md:text-lg text-neon-green/80 max-w-2xl mx-auto leading-relaxed">
+          Desarrollador orientado a backend con experiencia construyendo sistemas web completos para gestión médica,
+          portales de contenido y aplicaciones administrativas.
           <br className="hidden md:block" />
           <span className="block mt-2">
-            Me especializo en diseñar lógica de negocio, modelado de datos y APIs robustas que soportan aplicaciones reales.
+            Me especializo en diseñar lógica de negocio, modelado de datos y APIs robustas que soportan aplicaciones
+            reales.
           </span>
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
           <button
+            type="button"
             onClick={scrollToProjects}
-            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/50"
+            className="font-retro text-xs sm:text-sm px-8 py-3 border-2 border-neon-green text-neon-green bg-transparent rounded-none tracking-widest hover:bg-neon-green hover:text-black transition-transform duration-150 hover:translate-y-0.5 shadow-[0_0_15px_rgba(0,255,65,0.6)]"
           >
-            Ver proyectos
+            VER PROYECTOS
           </button>
           <a
             href="https://github.com/Nikise23"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 bg-dark-secondary hover:bg-slate-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 border border-gray-700 hover:border-gray-600"
+            className="font-retro text-xs sm:text-sm px-8 py-3 border-2 border-neon-cyan text-neon-cyan bg-transparent rounded-none tracking-widest hover:bg-neon-cyan hover:text-black transition-transform duration-150 hover:translate-y-0.5 shadow-[0_0_15px_rgba(0,212,255,0.6)]"
           >
-            GitHub
+            GITHUB
           </a>
         </div>
       </div>
