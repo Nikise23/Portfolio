@@ -16,7 +16,7 @@ function Footer() {
         </div>
         {typeof visits === 'number' && (
           <div
-            className="font-retro text-[10px] text-neon-green/60 px-3 py-1 border border-neon-green/40 rounded-none"
+            className="font-pixel text-[10px] text-neon-green px-3 py-1 border border-neon-green/40 rounded-none tracking-[0.25em]"
             aria-label="contador global de visitas"
           >
             {visits}
