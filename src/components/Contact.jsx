@@ -1,4 +1,25 @@
 function Contact() {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const form = e.target
+    const name = form.name.value
+    const email = form.email.value
+    const message = form.message.value
+
+    const text = `
+Hola, soy ${name}.
+Email: ${email}
+
+${message}
+    `.trim()
+
+    const phone = '541162041909'
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`
+
+    window.open(url, '_blank')
+  }
+
   return (
     <section id="contact" className="py-20 px-4 bg-dark-bg">
       <div className="max-w-4xl mx-auto text-center">
@@ -66,13 +87,14 @@ function Contact() {
 
         <form
           className="mt-6 text-left bg-dark-card border-2 border-neon-green rounded-none px-6 py-8 max-w-2xl mx-auto pixel-border"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
           <div className="mb-6">
             <label className="block font-pixel text-[10px] text-neon-green mb-2 tracking-[0.25em]">
               NOMBRE
             </label>
             <input
+              name="name"
               type="text"
               className="w-full bg-dark-card border-2 border-neon-green text-neon-green font-retro text-sm px-3 py-2 rounded-none placeholder:text-neon-green/50 focus:outline-none focus:ring-0 focus:border-neon-cyan shadow-[0_0_10px_rgba(0,255,65,0.4)]"
               placeholder="INGRESA TU NOMBRE"
@@ -83,6 +105,7 @@ function Contact() {
               EMAIL
             </label>
             <input
+              name="email"
               type="email"
               className="w-full bg-dark-card border-2 border-neon-green text-neon-green font-retro text-sm px-3 py-2 rounded-none placeholder:text-neon-green/50 focus:outline-none focus:ring-0 focus:border-neon-cyan shadow-[0_0_10px_rgba(0,255,65,0.4)]"
               placeholder="INGRESA TU EMAIL"
@@ -93,6 +116,7 @@ function Contact() {
               MENSAJE
             </label>
             <textarea
+              name="message"
               rows="4"
               className="w-full bg-dark-card border-2 border-neon-green text-neon-green font-retro text-sm px-3 py-2 rounded-none placeholder:text-neon-green/50 focus:outline-none focus:ring-0 focus:border-neon-cyan resize-none shadow-[0_0_10px_rgba(0,255,65,0.4)]"
               placeholder="ESCRIBE TU MENSAJE"

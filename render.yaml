@@ -8,3 +8,13 @@ services:
       - key: NODE_VERSION
         value: 18.x
 
+  - type: web
+    name: portfolio-visits-counter
+    env: node
+    rootDir: api
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.x
+
