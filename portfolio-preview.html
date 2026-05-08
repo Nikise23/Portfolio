@@ -250,20 +250,32 @@
 
     .hero-visual {
       position: relative;
-      width: min(100%, 420px);
+      width: min(100%, 500px);
+      min-height: 460px;
       margin-inline: auto;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 8% -4% -6% 12%;
+      z-index: -1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 62% 42%, rgba(0, 255, 136, 0.22), transparent 44%),
+        radial-gradient(circle at 42% 62%, rgba(64, 108, 255, 0.18), transparent 48%);
+      filter: blur(26px);
+      opacity: 0.95;
     }
 
     .photo-frame {
       position: relative;
-      min-height: 440px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 36px;
-      background:
-        linear-gradient(145deg, rgba(0, 255, 136, 0.16), transparent 42%),
-        rgba(255, 255, 255, 0.04);
-      box-shadow: var(--shadow);
+      min-height: 520px;
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     .photo-frame::before,
@@ -275,29 +287,36 @@
     }
 
     .photo-frame::before {
-      width: 220px;
-      height: 220px;
-      right: -64px;
-      top: -44px;
-      background: rgba(0, 255, 136, 0.18);
-      filter: blur(6px);
+      width: 76%;
+      height: 76%;
+      right: -4%;
+      bottom: 0;
+      z-index: -1;
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.2), transparent 64%);
+      filter: blur(20px);
     }
 
     .photo-frame::after {
-      inset: auto 24px 24px 24px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.9), transparent);
-      border-radius: 0;
+      inset: 8% -8% 4% auto;
+      width: 52%;
+      height: 88%;
+      z-index: -1;
+      border: 1px solid rgba(0, 255, 136, 0.16);
+      background: linear-gradient(90deg, rgba(0, 255, 136, 0.08), transparent);
+      border-radius: 50%;
     }
 
     .hero-photo {
       position: absolute;
-      inset: 0;
+      inset: auto 0 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: saturate(1.04) contrast(1.02);
+      object-fit: contain;
+      object-position: center bottom;
+      mix-blend-mode: multiply;
+      filter: saturate(1.12) contrast(1.08) brightness(1.08);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 44%, #000 48%, rgba(0, 0, 0, 0.72) 64%, transparent 84%);
+      mask-image: radial-gradient(ellipse at 50% 44%, #000 48%, rgba(0, 0, 0, 0.72) 64%, transparent 84%);
     }
 
     .floating-card {
@@ -792,9 +811,12 @@
         padding-top: 54px;
       }
 
+      .hero-visual {
+        min-height: 390px;
+      }
+
       .photo-frame {
         min-height: 380px;
-        border-radius: 28px;
       }
 
       .floating-card {
