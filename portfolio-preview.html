@@ -150,79 +150,65 @@
 
     .hero {
       position: relative;
-      isolation: isolate;
-      min-height: 90vh;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
+      width: 100%;
+      height: 100vh;
+      padding: 0;
+      background-color: #1a1a2e;
       display: flex;
       align-items: center;
-      padding: 130px 0 90px;
       overflow: hidden;
-      background-image: url('mi-foto.png');
-      background-position: center right;
-      background-size: cover;
-      background-repeat: no-repeat;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: rgba(15, 15, 30, 0.55);
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      width: 50%;
+      padding-left: 80px;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background:
-        linear-gradient(90deg, rgba(15, 15, 30, 0.92) 0%, rgba(15, 15, 30, 0.72) 36%, rgba(15, 15, 30, 0.14) 72%),
-        linear-gradient(0deg, rgba(15, 15, 30, 0.88) 0%, transparent 32%, rgba(15, 15, 30, 0.38) 100%);
-    }
-
-    .hero-grid {
-      width: min(100% - 32px, var(--max-width));
-      margin-inline: auto;
-      padding-left: clamp(18px, 7vw, 80px);
-    }
-
-    .eyebrow {
+    .label {
+      display: inline-block;
       margin-bottom: 14px;
-      color: var(--green);
+      color: #2ecc71;
       font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.22em;
       text-transform: uppercase;
     }
 
-    .hero-title {
+    .hero h1 {
       max-width: 680px;
       font-size: clamp(2.55rem, 11vw, 5.7rem);
       line-height: 0.95;
       letter-spacing: -0.07em;
       color: #ffffff;
+      text-shadow: 0 12px 34px rgba(0, 0, 0, 0.38);
     }
 
-    .hero-title span {
-      color: #ffffff;
-      text-shadow: 0 0 26px rgba(0, 0, 0, 0.34);
-    }
-
-    .role-badge {
-      width: fit-content;
-      margin: 22px 0 26px;
-      padding: 9px 16px;
-      border: 1px solid rgba(46, 204, 113, 0.5);
-      border-radius: 999px;
+    .badge {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 8px 14px;
+      border-radius: 4px;
       background: #2ecc71;
-      color: #06110c;
+      color: #000000;
       font-size: 0.83rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       box-shadow: 0 0 28px rgba(46, 204, 113, 0.28);
+    }
+
+    .hero-photo {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      width: auto;
+      height: 95%;
+      object-fit: contain;
+      object-position: bottom right;
+      mix-blend-mode: multiply;
     }
 
     section {
@@ -644,13 +630,6 @@
         display: none;
       }
 
-      .hero {
-        min-height: 90vh;
-        display: flex;
-        align-items: center;
-        padding: 130px 0 90px;
-      }
-
       .about-card {
         grid-template-columns: 0.9fr 1.1fr;
         align-items: center;
@@ -663,15 +642,36 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 100vh;
+        padding-bottom: 40px;
+      }
+
+      .hero-photo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        opacity: 0.4;
+      }
+
+      .hero-text {
+        width: 90%;
+        padding-left: 20px;
+        z-index: 3;
+      }
+    }
+
     @media (max-width: 420px) {
       .container {
         width: min(100% - 22px, var(--max-width));
-      }
-
-      .hero {
-        min-height: 90vh;
-        padding: 112px 0 72px;
-        background-position: 66% center;
       }
     }
   </style>
@@ -701,13 +701,12 @@
 
   <main>
     <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="eyebrow">Personal Portfolio</p>
-          <h1 class="hero-title">Soy <span>Tu Nombre</span></h1>
-          <div class="role-badge">Tu Rol / Especialidad</div>
-        </div>
+      <div class="hero-text">
+        <span class="label">PERSONAL PORTFOLIO</span>
+        <h1>Soy [Tu Nombre]</h1>
+        <span class="badge">Tu Rol / Especialidad</span>
       </div>
+      <img src="mi-foto.png" class="hero-photo" alt="foto">
     </section>
 
     <section id="about" class="about">
