@@ -513,6 +513,9 @@
 
     .tech-pill {
       flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid rgba(0, 255, 136, 0.35);
@@ -523,6 +526,18 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       white-space: nowrap;
+    }
+
+    .tech-pill-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .tech-pill-icon-on-dark {
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
     }
 
     @keyframes techMarquee {
@@ -1270,21 +1285,21 @@
               <div class="tech-marquee" aria-label="Tecnologias del proyecto">
                 <div class="tech-marquee-track">
                   <div class="tech-marquee-group">
-                    <span class="tech-pill">NestJS</span>
-                    <span class="tech-pill">Node.js</span>
-                    <span class="tech-pill">TypeScript</span>
-                    <span class="tech-pill">PostgreSQL</span>
-                    <span class="tech-pill">Prisma ORM</span>
-                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nestjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />NestJS</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nodedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Node.js</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/typescript.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />TypeScript</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/postgresql.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />PostgreSQL</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/prisma.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Prisma ORM</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jsonwebtokens.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />JWT</span>
                     <span class="tech-pill">class-validator</span>
                   </div>
                   <div class="tech-marquee-group" aria-hidden="true">
-                    <span class="tech-pill">NestJS</span>
-                    <span class="tech-pill">Node.js</span>
-                    <span class="tech-pill">TypeScript</span>
-                    <span class="tech-pill">PostgreSQL</span>
-                    <span class="tech-pill">Prisma ORM</span>
-                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nestjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />NestJS</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nodedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Node.js</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/typescript.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />TypeScript</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/postgresql.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />PostgreSQL</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/prisma.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Prisma ORM</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jsonwebtokens.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />JWT</span>
                     <span class="tech-pill">class-validator</span>
                   </div>
                 </div>
@@ -1317,18 +1332,18 @@
               <div class="tech-marquee" aria-label="Tecnologias del proyecto">
                 <div class="tech-marquee-track">
                   <div class="tech-marquee-group">
-                    <span class="tech-pill">Vue 3</span>
-                    <span class="tech-pill">Node.js</span>
-                    <span class="tech-pill">Express</span>
-                    <span class="tech-pill">MongoDB</span>
-                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/vuedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Vue 3</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nodedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Node.js</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/express.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Express</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/mongodb.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />MongoDB</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jsonwebtokens.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />JWT</span>
                   </div>
                   <div class="tech-marquee-group" aria-hidden="true">
-                    <span class="tech-pill">Vue 3</span>
-                    <span class="tech-pill">Node.js</span>
-                    <span class="tech-pill">Express</span>
-                    <span class="tech-pill">MongoDB</span>
-                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/vuedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Vue 3</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nodedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Node.js</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/express.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Express</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/mongodb.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />MongoDB</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jsonwebtokens.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />JWT</span>
                   </div>
                 </div>
               </div>
@@ -1361,22 +1376,22 @@
               <div class="tech-marquee" aria-label="Tecnologias del proyecto">
                 <div class="tech-marquee-track">
                   <div class="tech-marquee-group">
-                    <span class="tech-pill">React</span>
-                    <span class="tech-pill">Node.js</span>
-                    <span class="tech-pill">Express</span>
-                    <span class="tech-pill">MongoDB</span>
-                    <span class="tech-pill">Mongoose</span>
-                    <span class="tech-pill">JWT</span>
-                    <span class="tech-pill">Joi</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/react.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />React</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nodedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Node.js</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/express.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Express</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/mongodb.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />MongoDB</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/mongoose.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Mongoose</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jsonwebtokens.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />JWT</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/javascript.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Joi</span>
                   </div>
                   <div class="tech-marquee-group" aria-hidden="true">
-                    <span class="tech-pill">React</span>
-                    <span class="tech-pill">Node.js</span>
-                    <span class="tech-pill">Express</span>
-                    <span class="tech-pill">MongoDB</span>
-                    <span class="tech-pill">Mongoose</span>
-                    <span class="tech-pill">JWT</span>
-                    <span class="tech-pill">Joi</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/react.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />React</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/nodedotjs.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Node.js</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/express.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Express</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/mongodb.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />MongoDB</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/mongoose.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Mongoose</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jsonwebtokens.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />JWT</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/javascript.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Joi</span>
                   </div>
                 </div>
               </div>
@@ -1409,16 +1424,16 @@
               <div class="tech-marquee" aria-label="Tecnologias del proyecto">
                 <div class="tech-marquee-track">
                   <div class="tech-marquee-group">
-                    <span class="tech-pill">Python</span>
-                    <span class="tech-pill">Flask</span>
-                    <span class="tech-pill">SQLite</span>
-                    <span class="tech-pill">Jinja2</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/python.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Python</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/flask.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Flask</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/sqlite.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />SQLite</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jinja.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Jinja2</span>
                   </div>
                   <div class="tech-marquee-group" aria-hidden="true">
-                    <span class="tech-pill">Python</span>
-                    <span class="tech-pill">Flask</span>
-                    <span class="tech-pill">SQLite</span>
-                    <span class="tech-pill">Jinja2</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/python.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Python</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/flask.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Flask</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/sqlite.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />SQLite</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/jinja.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Jinja2</span>
                   </div>
                 </div>
               </div>
@@ -1451,14 +1466,14 @@
               <div class="tech-marquee" aria-label="Tecnologias del proyecto">
                 <div class="tech-marquee-track">
                   <div class="tech-marquee-group">
-                    <span class="tech-pill">Python</span>
-                    <span class="tech-pill">Flask</span>
-                    <span class="tech-pill">SQLite</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/python.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Python</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/flask.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Flask</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/sqlite.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />SQLite</span>
                   </div>
                   <div class="tech-marquee-group" aria-hidden="true">
-                    <span class="tech-pill">Python</span>
-                    <span class="tech-pill">Flask</span>
-                    <span class="tech-pill">SQLite</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/python.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Python</span>
+                    <span class="tech-pill"><img class="tech-pill-icon tech-pill-icon-on-dark" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/flask.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />Flask</span>
+                    <span class="tech-pill"><img class="tech-pill-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/sqlite.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />SQLite</span>
                   </div>
                 </div>
               </div>
@@ -1557,7 +1572,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>2026 Nicolas Fernandez — Full Stack Developer. Portfolio consolidado desde el proyecto React anterior.</p>
+      <p>© 2026 Nicolás Fernández — Full Stack Developer</p>
     </div>
   </footer>
 
