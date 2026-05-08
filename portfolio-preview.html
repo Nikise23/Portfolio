@@ -442,7 +442,8 @@
 
     .project-card {
       position: relative;
-      min-height: 230px;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 22px;
@@ -450,33 +451,129 @@
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
     }
 
-    .project-thumb {
-      width: 100%;
-      height: 100%;
-      min-height: 230px;
-      display: grid;
-      place-items: center;
+    .project-head {
+      flex-shrink: 0;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 22px;
+      text-align: center;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02)),
         var(--thumb-bg);
-      color: rgba(255, 255, 255, 0.84);
-      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .project-head h3 {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.94);
+      font-size: clamp(0.72rem, 2.5vw, 0.88rem);
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.11em;
+      line-height: 1.35;
       text-transform: uppercase;
+    }
+
+    .project-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 18px 20px 20px;
+      background: linear-gradient(180deg, rgba(12, 12, 22, 0.65), rgba(20, 20, 38, 0.92));
+    }
+
+    .project-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .tech-marquee {
+      margin-top: 16px;
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+
+    .tech-marquee-track {
+      display: flex;
+      width: max-content;
+      gap: 10px;
+      animation: techMarquee 22s linear infinite;
+    }
+
+    .tech-marquee-group {
+      display: flex;
+      flex-shrink: 0;
+      gap: 10px;
+      padding-right: 28px;
+    }
+
+    .tech-pill {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 136, 0.35);
+      background: rgba(0, 255, 136, 0.06);
+      color: var(--green);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes techMarquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tech-marquee-track {
+        animation: none;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .tech-marquee-group[aria-hidden="true"] {
+        display: none;
+      }
+
+      .tech-marquee {
+        mask-image: none;
+      }
+
+      .tech-pill {
+        white-space: normal;
+        text-align: center;
+      }
     }
 
     .project-overlay {
       position: absolute;
       inset: 0;
       display: grid;
-      place-items: center;
+      align-items: center;
+      justify-items: center;
       padding: 22px;
-      background: rgba(0, 255, 136, 0.9);
+      background: rgba(0, 255, 136, 0.92);
       color: #06110c;
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 0.24s ease, transform 0.24s ease;
+      pointer-events: none;
+    }
+
+    .project-overlay a {
+      pointer-events: auto;
     }
 
     .project-card:hover .project-overlay {
@@ -486,12 +583,29 @@
 
     .overlay-content {
       text-align: center;
+      max-width: 420px;
     }
 
     .overlay-content h3 {
-      font-size: 1.25rem;
-      line-height: 1.1;
+      font-size: 1.15rem;
+      line-height: 1.15;
       text-transform: uppercase;
+    }
+
+    .overlay-content .overlay-lead {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .overlay-content .overlay-arch {
+      margin-top: 10px;
+      font-size: 0.74rem;
+      line-height: 1.45;
+      opacity: 0.92;
+      text-align: left;
     }
 
     .overlay-icons {
@@ -1145,12 +1259,44 @@
 
         <div class="project-grid">
           <article class="project-card" data-tags="backend nestjs postgres produccion api fullstack">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #0f3d2e, #00bf68);">
-              Historias clinicas</div>
+            <header class="project-head" style="--thumb-bg: linear-gradient(135deg, #0f3d2e, #00bf68);">
+              <h3>Sistema de historias clinicas</h3>
+            </header>
+            <div class="project-body">
+              <p class="project-desc">
+                Backend modular para gestion de historias clinicas medicas con flujo de atencion en tiempo real:
+                sala de espera dinamica, estados de atencion e historias vinculadas a cada consulta.
+              </p>
+              <div class="tech-marquee" aria-label="Tecnologias del proyecto">
+                <div class="tech-marquee-track">
+                  <div class="tech-marquee-group">
+                    <span class="tech-pill">NestJS</span>
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">TypeScript</span>
+                    <span class="tech-pill">PostgreSQL</span>
+                    <span class="tech-pill">Prisma ORM</span>
+                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill">class-validator</span>
+                  </div>
+                  <div class="tech-marquee-group" aria-hidden="true">
+                    <span class="tech-pill">NestJS</span>
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">TypeScript</span>
+                    <span class="tech-pill">PostgreSQL</span>
+                    <span class="tech-pill">Prisma ORM</span>
+                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill">class-validator</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-overlay">
               <div class="overlay-content">
                 <h3>Historias clinicas</h3>
-                <p>Backend NestJS + PostgreSQL, sala de espera en tiempo real</p>
+                <p class="overlay-lead">API REST en produccion con roles y validaciones fuertes.</p>
+                <p class="overlay-arch">
+                  Arquitectura modular NestJS: modulos auth, pacientes, atenciones e historias; PostgreSQL + Prisma ORM.
+                </p>
                 <div class="overlay-icons">
                   <a href="https://consultorios-medico-colom.onrender.com/login" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
                     <span class="portfolio-icon portfolio-icon-link"></span>
@@ -1161,12 +1307,39 @@
           </article>
 
           <article class="project-card" data-tags="fullstack vue node mongodb produccion api">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #1a2744, #6f7cff);">
-              Portal de noticias</div>
+            <header class="project-head" style="--thumb-bg: linear-gradient(135deg, #1a2744, #6f7cff);">
+              <h3>Portal de noticias</h3>
+            </header>
+            <div class="project-body">
+              <p class="project-desc">
+                SPA que consume una API REST para articulos dinamicos: autenticacion de usuarios, lectura y gestion de contenido desde panel.
+              </p>
+              <div class="tech-marquee" aria-label="Tecnologias del proyecto">
+                <div class="tech-marquee-track">
+                  <div class="tech-marquee-group">
+                    <span class="tech-pill">Vue 3</span>
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">Express</span>
+                    <span class="tech-pill">MongoDB</span>
+                    <span class="tech-pill">JWT</span>
+                  </div>
+                  <div class="tech-marquee-group" aria-hidden="true">
+                    <span class="tech-pill">Vue 3</span>
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">Express</span>
+                    <span class="tech-pill">MongoDB</span>
+                    <span class="tech-pill">JWT</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-overlay">
               <div class="overlay-content">
-                <h3>Portal de Noticias</h3>
-                <p>Vue 3 SPA + Express + MongoDB + JWT</p>
+                <h3>Portal de noticias</h3>
+                <p class="overlay-lead">Full stack con SPA liviana y backend JWT.</p>
+                <p class="overlay-arch">
+                  Tres capas: frontend Vue, API Express en Node.js y MongoDB para persistencia.
+                </p>
                 <div class="overlay-icons">
                   <a href="https://portal-de-noticias-backend.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
                     <span class="portfolio-icon portfolio-icon-link"></span>
@@ -1177,12 +1350,44 @@
           </article>
 
           <article class="project-card" data-tags="fullstack react node mongodb produccion">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #2a2438, #ff6fd8);">
-              Gestion odontologica</div>
+            <header class="project-head" style="--thumb-bg: linear-gradient(135deg, #2a2438, #ff6fd8);">
+              <h3>Gestion odontologica</h3>
+            </header>
+            <div class="project-body">
+              <p class="project-desc">
+                Sistema para consultorios odontologicos con odontograma interactivo: pacientes, tratamientos,
+                pagos e historial clinico completo por persona.
+              </p>
+              <div class="tech-marquee" aria-label="Tecnologias del proyecto">
+                <div class="tech-marquee-track">
+                  <div class="tech-marquee-group">
+                    <span class="tech-pill">React</span>
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">Express</span>
+                    <span class="tech-pill">MongoDB</span>
+                    <span class="tech-pill">Mongoose</span>
+                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill">Joi</span>
+                  </div>
+                  <div class="tech-marquee-group" aria-hidden="true">
+                    <span class="tech-pill">React</span>
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">Express</span>
+                    <span class="tech-pill">MongoDB</span>
+                    <span class="tech-pill">Mongoose</span>
+                    <span class="tech-pill">JWT</span>
+                    <span class="tech-pill">Joi</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-overlay">
               <div class="overlay-content">
                 <h3>Gestion odontologica</h3>
-                <p>React + Express + MongoDB, odontograma interactivo</p>
+                <p class="overlay-lead">Panel React + API REST con reglas de negocio de clinicas reales.</p>
+                <p class="overlay-arch">
+                  Full stack React y Express con MongoDB Atlas y validaciones con Joi.
+                </p>
                 <div class="overlay-icons">
                   <a href="https://odontologia-app-jk2l.onrender.com/login" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
                     <span class="portfolio-icon portfolio-icon-link"></span>
@@ -1193,12 +1398,38 @@
           </article>
 
           <article class="project-card" data-tags="fullstack python flask sqlite produccion">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #3d2f1f, #ffcd4d);">
-              Consultorio medico</div>
+            <header class="project-head" style="--thumb-bg: linear-gradient(135deg, #3d2f1f, #ffcd4d);">
+              <h3>Consultorio medico</h3>
+            </header>
+            <div class="project-body">
+              <p class="project-desc">
+                Administracion integral de consultorios: pacientes, turnos, agenda medica, pagos e historias clinicas
+                con roles y reportes administrativos.
+              </p>
+              <div class="tech-marquee" aria-label="Tecnologias del proyecto">
+                <div class="tech-marquee-track">
+                  <div class="tech-marquee-group">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Flask</span>
+                    <span class="tech-pill">SQLite</span>
+                    <span class="tech-pill">Jinja2</span>
+                  </div>
+                  <div class="tech-marquee-group" aria-hidden="true">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Flask</span>
+                    <span class="tech-pill">SQLite</span>
+                    <span class="tech-pill">Jinja2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-overlay">
               <div class="overlay-content">
                 <h3>Consultorio medico</h3>
-                <p>Python, Flask y SQLite para administracion integral</p>
+                <p class="overlay-lead">Monolito Flask con persistencia relacional y auth por roles.</p>
+                <p class="overlay-arch">
+                  Templates Jinja2, SQLite y flujos de agenda + historias clinicas.
+                </p>
                 <div class="overlay-icons">
                   <a href="https://colom-bobbiesi.onrender.com/login" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
                     <span class="portfolio-icon portfolio-icon-link"></span>
@@ -1209,12 +1440,36 @@
           </article>
 
           <article class="project-card" data-tags="fullstack python flask sqlite produccion">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #10322a, #00d1a8);">
-              Turnos medicos</div>
+            <header class="project-head" style="--thumb-bg: linear-gradient(135deg, #10322a, #00d1a8);">
+              <h3>Turnos medicos</h3>
+            </header>
+            <div class="project-body">
+              <p class="project-desc">
+                Gestion de consultorios con portal publico para pedir turnos online mas administracion de turnos,
+                pacientes, agenda y registros clinicos.
+              </p>
+              <div class="tech-marquee" aria-label="Tecnologias del proyecto">
+                <div class="tech-marquee-track">
+                  <div class="tech-marquee-group">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Flask</span>
+                    <span class="tech-pill">SQLite</span>
+                  </div>
+                  <div class="tech-marquee-group" aria-hidden="true">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Flask</span>
+                    <span class="tech-pill">SQLite</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-overlay">
               <div class="overlay-content">
                 <h3>Turnos medicos</h3>
-                <p>Flask + SQLite, portal publico de turnos online</p>
+                <p class="overlay-lead">Portal self-service + panel administrativo en un solo producto.</p>
+                <p class="overlay-arch">
+                  Flask con Jinja2 y SQLite; separacion clara entre flujo publico y gestion interna.
+                </p>
                 <div class="overlay-icons">
                   <a href="https://consultorios-colom.onrender.com/" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
                     <span class="portfolio-icon portfolio-icon-link"></span>
