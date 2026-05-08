@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Preview</title>
+  <title>Nicolás Fernández — Full Stack Developer</title>
   <style>
     :root {
       --bg: #111120;
@@ -67,10 +67,25 @@
     }
 
     .nav-inner {
+      position: relative;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
       min-height: 76px;
+    }
+
+    .nav-toggle {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .logo {
@@ -92,60 +107,88 @@
       border-radius: 50%;
       color: var(--green);
       box-shadow: 0 0 22px rgba(0, 255, 136, 0.2);
+      font-size: 0.52rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
     }
 
     .nav-links {
       display: none;
-      align-items: center;
-      gap: 24px;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      margin: 0;
+      padding: 0;
       list-style: none;
+      border-top: 1px solid var(--line);
       font-size: 0.73rem;
       font-weight: 800;
       letter-spacing: 0.13em;
       text-transform: uppercase;
     }
 
+    .nav-links li {
+      border-bottom: 1px solid var(--line);
+    }
+
     .nav-links a {
+      display: block;
+      padding: 14px 4px;
       color: var(--text);
       transition: color 0.2s ease;
     }
 
     .nav-links a:hover,
-    .nav-links a.active {
+    .nav-links a.nav-item.active {
       color: #2ecc71;
     }
 
-    .mobile-menu {
+    .nav-burger {
       width: 42px;
       height: 42px;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 5px;
+      margin-left: auto;
       border: 1px solid var(--line);
       border-radius: 12px;
       color: #2ecc71;
+      cursor: pointer;
+      background: transparent;
     }
 
-    .mobile-menu span {
+    .nav-burger span {
       width: 18px;
       height: 2px;
       border-radius: 999px;
       background: currentColor;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      transform-origin: center;
     }
 
-    .mobile-menu span:first-child {
+    #nav-toggle:checked ~ .nav-burger span:first-child {
       transform: translateY(7px) rotate(45deg);
     }
 
-    .mobile-menu span:nth-child(2) {
+    #nav-toggle:checked ~ .nav-burger span:nth-child(2) {
       opacity: 0;
     }
 
-    .mobile-menu span:last-child {
+    #nav-toggle:checked ~ .nav-burger span:last-child {
       transform: translateY(-7px) rotate(-45deg);
+    }
+
+    #nav-toggle:checked ~ .nav-links {
+      display: flex;
+    }
+
+    @media (max-width: 899px) {
+      .nav-burger {
+        display: flex;
+      }
     }
 
     .hero {
@@ -631,6 +674,189 @@
       font-size: 0.9rem;
     }
 
+    main {
+      padding-top: 76px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .hero-lead {
+      margin-top: 18px;
+      max-width: 520px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .hero-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-cta a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(46, 204, 113, 0.55);
+    }
+
+    .hero-cta a.primary {
+      border-color: transparent;
+      background: #2ecc71;
+      color: #06110c;
+    }
+
+    .about-bio-block {
+      text-align: left;
+      margin-top: 26px;
+    }
+
+    .about-bio-block p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .about-bio-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-section {
+      padding: 78px 0;
+      border-block: 1px solid var(--line);
+      background: rgba(7, 7, 14, 0.24);
+    }
+
+    .contact-wrap {
+      width: min(100% - 32px, 640px);
+      margin-inline: auto;
+    }
+
+    .contact-intro {
+      margin-bottom: 36px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border: 1px solid rgba(0, 255, 136, 0.45);
+      border-radius: 12px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-links a:hover {
+      transform: translateY(-3px);
+      background: rgba(0, 255, 136, 0.08);
+    }
+
+    .contact-form {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 26px;
+      background: rgba(32, 32, 56, 0.72);
+    }
+
+    .form-field {
+      margin-bottom: 18px;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid rgba(0, 255, 136, 0.35);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--text);
+      background: rgba(12, 12, 24, 0.8);
+      outline: none;
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      min-height: 48px;
+      border: none;
+      border-radius: 12px;
+      background: #2ecc71;
+      color: #06110c;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.94;
+      transform: translateY(-2px);
+    }
+
+    .project-card.is-hidden {
+      display: none;
+    }
+
+    .stack-tags {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
     @keyframes fillBar {
       from {
         transform: scaleX(0);
@@ -653,12 +879,32 @@
     }
 
     @media (min-width: 900px) {
-      .nav-links {
-        display: flex;
+      .nav-burger {
+        display: none;
       }
 
-      .mobile-menu {
-        display: none;
+      .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        flex-basis: auto;
+        width: auto;
+        gap: 24px;
+        border-top: none;
+        padding: 0;
+        margin: 0 0 0 auto;
+        max-width: 72%;
+      }
+
+      .nav-links li {
+        border-bottom: none;
+      }
+
+      .nav-links a {
+        display: inline;
+        padding: 0;
       }
 
       .about-card {
@@ -667,9 +913,18 @@
         padding: 42px;
       }
 
-      .project-grid,
-      .services-grid {
+      .project-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .services-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
 
@@ -764,188 +1019,206 @@
 <body>
   <header class="navbar">
     <nav class="container nav-inner" aria-label="Navegacion principal">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
       <a class="logo" href="#home" aria-label="Inicio">
-        <span class="logo-mark">A</span>
-        <span>Portfolio</span>
+        <span class="logo-mark">NF</span>
+        <span>Nicolas Fernandez</span>
       </a>
-      <ul class="nav-links">
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <label class="nav-burger" for="nav-toggle" aria-label="Abrir menu principal">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <ul class="nav-links" id="main-nav">
+        <li><a class="nav-item active" href="#home">Home</a></li>
+        <li><a class="nav-item" href="#about">About</a></li>
+        <li><a class="nav-item" href="#projects">Projects</a></li>
+        <li><a class="nav-item" href="#skills">Skills</a></li>
+        <li><a class="nav-item" href="#contact">Contact</a></li>
       </ul>
-      <span class="mobile-menu" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="home">
       <div class="hero-text">
-        <span class="label">PERSONAL PORTFOLIO</span>
-        <h1>Soy [Tu Nombre]</h1>
-        <span class="badge">Tu Rol / Especialidad</span>
+        <span class="label">Portfolio profesional</span>
+        <h1>Soy Nicolas Fernandez</h1>
+        <span class="badge">Full Stack Developer — Backend Focus</span>
+        <p class="hero-lead">
+          Desarrollador orientado a backend con experiencia construyendo sistemas web completos para gestion medica,
+          portales de contenido y aplicaciones administrativas. Me enfoco en logica de negocio, modelado de datos y APIs robustas.
+        </p>
+        <div class="hero-cta">
+          <a class="primary" href="#projects">Ver proyectos</a>
+          <a href="https://github.com/Nikise23" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
       </div>
-      <img src="mi-foto-hero.png" class="hero-photo" alt="foto">
+      <img src="mi-foto-hero.png" class="hero-photo" alt="Nicolas Fernandez">
     </section>
 
     <section id="about" class="about">
       <div class="container">
         <div class="section-heading">
-          <p class="section-kicker">About me</p>
+          <p class="section-kicker">Sobre mi</p>
           <h2 class="section-title">Perfil profesional</h2>
           <p class="section-text">
-            Soy un desarrollador y disenador enfocado en construir interfaces limpias,
-            escalables y con una experiencia visual memorable.
+            Soy desarrollador Full Stack con fuerte orientacion al backend y a la arquitectura de sistemas.
+          </p>
+        </div>
+
+        <div class="about-bio-block">
+          <p>
+            Disfruto disenar la logica de negocio detras de aplicaciones reales, modelar bases de datos y construir APIs
+            que soporten aplicaciones escalables.
+          </p>
+          <p>
+            He desarrollado multiples sistemas completos en produccion para la gestion de consultorios medicos, clinicas odontologicas
+            y portales web, integrando autenticacion, roles, persistencia y reglas complejas de negocio.
+          </p>
+          <p>
+            Mi stack principal incluye Node.js, Python, MongoDB, SQL, React y Vue, trabajando con arquitecturas claras y mantenibles.
           </p>
         </div>
 
         <article class="about-card">
           <div class="profile-panel">
             <div class="avatar">
-              <img src="mi-foto.png" alt="Retrato circular de Tu Nombre">
+              <img src="mi-foto.png" alt="Nicolas Fernandez">
             </div>
             <ul class="info-list">
-              <li><strong>Nombre:</strong> Tu Nombre</li>
-              <li><strong>Email:</strong> hola@tudominio.com</li>
-              <li><strong>Telefono:</strong> +00 000 000 000</li>
-              <li><strong>Ubicacion:</strong> Tu Ciudad</li>
+              <li><strong>Nombre:</strong> Nicolas Fernandez</li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/Nikise23" target="_blank" rel="noopener noreferrer">github.com/Nikise23</a></li>
+              <li><strong>WhatsApp:</strong> <a href="https://wa.me/541162041909" target="_blank" rel="noopener noreferrer">+54 9 11 6204-1909</a></li>
+              <li><strong>Ubicacion:</strong> Buenos Aires, Argentina</li>
             </ul>
           </div>
 
-          <div class="skills" aria-label="Habilidades">
+          <div class="skills" aria-label="Habilidades destacadas">
             <div class="skill">
               <div class="skill-top">
-                <span>HTML5 & CSS3</span>
-                <span>95%</span>
+                <span>Node.js / APIs REST</span>
+                <span>92%</span>
               </div>
-              <div class="progress"><span style="--value: 95%"></span></div>
+              <div class="progress"><span style="--value: 92%;"></span></div>
             </div>
             <div class="skill">
               <div class="skill-top">
-                <span>JavaScript</span>
-                <span>88%</span>
-              </div>
-              <div class="progress"><span style="--value: 88%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="skill-top">
-                <span>Web Design</span>
+                <span>Python</span>
                 <span>90%</span>
               </div>
-              <div class="progress"><span style="--value: 90%"></span></div>
+              <div class="progress"><span style="--value: 90%;"></span></div>
             </div>
             <div class="skill">
               <div class="skill-top">
-                <span>UI / UX</span>
-                <span>82%</span>
+                <span>MongoDB / SQL</span>
+                <span>88%</span>
               </div>
-              <div class="progress"><span style="--value: 82%"></span></div>
+              <div class="progress"><span style="--value: 88%;"></span></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top">
+                <span>React / Vue</span>
+                <span>85%</span>
+              </div>
+              <div class="progress"><span style="--value: 85%;"></span></div>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="portfolio" class="portfolio">
+    <section id="projects" class="portfolio">
       <div class="container">
         <div class="section-heading">
-          <p class="section-kicker">Portfolio</p>
-          <h2 class="section-title">Trabajos recientes</h2>
+          <p class="section-kicker">Proyectos</p>
+          <h2 class="section-title">Sistemas en produccion</h2>
+          <p class="section-text">Seleccion de proyectos full stack y backend orientados a productos reales.</p>
         </div>
 
         <div class="filters" aria-label="Filtros de portfolio">
-          <button class="filter active" type="button">All</button>
-          <button class="filter" type="button">Development</button>
-          <button class="filter" type="button">Web Design</button>
-          <button class="filter" type="button">Illustration</button>
+          <button class="filter active" type="button" data-filter="all">Todos</button>
+          <button class="filter" type="button" data-filter="backend">Backend</button>
+          <button class="filter" type="button" data-filter="fullstack">Full Stack</button>
+          <button class="filter" type="button" data-filter="produccion">Produccion</button>
         </div>
 
         <div class="project-grid">
-          <article class="project-card">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #00bf68, #00ff88);">Project title</div>
+          <article class="project-card" data-tags="backend nestjs postgres produccion api fullstack">
+            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #0f3d2e, #00bf68);">
+              Historias clinicas</div>
             <div class="project-overlay">
               <div class="overlay-content">
-                <h3>Landing page</h3>
-                <p>Development</p>
+                <h3>Historias clinicas</h3>
+                <p>Backend NestJS + PostgreSQL, sala de espera en tiempo real</p>
                 <div class="overlay-icons">
-                  <a href="#" aria-label="Ver proyecto"><span class="portfolio-icon portfolio-icon-view"></span></a>
-                  <a href="#" aria-label="Abrir enlace"><span class="portfolio-icon portfolio-icon-link"></span></a>
+                  <a href="https://consultorios-medico-colom.onrender.com/login" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
+                    <span class="portfolio-icon portfolio-icon-link"></span>
+                  </a>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #22284a, #6f7cff);">Dashboard</div>
+          <article class="project-card" data-tags="fullstack vue node mongodb produccion api">
+            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #1a2744, #6f7cff);">
+              Portal de noticias</div>
             <div class="project-overlay">
               <div class="overlay-content">
-                <h3>Analytics app</h3>
-                <p>Web Design</p>
+                <h3>Portal de Noticias</h3>
+                <p>Vue 3 SPA + Express + MongoDB + JWT</p>
                 <div class="overlay-icons">
-                  <a href="#" aria-label="Ver proyecto"><span class="portfolio-icon portfolio-icon-view"></span></a>
-                  <a href="#" aria-label="Abrir enlace"><span class="portfolio-icon portfolio-icon-link"></span></a>
+                  <a href="https://portal-de-noticias-backend.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
+                    <span class="portfolio-icon portfolio-icon-link"></span>
+                  </a>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #293449, #68e6ff);">Branding</div>
+          <article class="project-card" data-tags="fullstack react node mongodb produccion">
+            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #2a2438, #ff6fd8);">
+              Gestion odontologica</div>
             <div class="project-overlay">
               <div class="overlay-content">
-                <h3>Visual system</h3>
-                <p>Illustration</p>
+                <h3>Gestion odontologica</h3>
+                <p>React + Express + MongoDB, odontograma interactivo</p>
                 <div class="overlay-icons">
-                  <a href="#" aria-label="Ver proyecto"><span class="portfolio-icon portfolio-icon-view"></span></a>
-                  <a href="#" aria-label="Abrir enlace"><span class="portfolio-icon portfolio-icon-link"></span></a>
+                  <a href="https://odontologia-app-jk2l.onrender.com/login" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
+                    <span class="portfolio-icon portfolio-icon-link"></span>
+                  </a>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #3a2747, #ff6fd8);">Mobile UI</div>
+          <article class="project-card" data-tags="fullstack python flask sqlite produccion">
+            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #3d2f1f, #ffcd4d);">
+              Consultorio medico</div>
             <div class="project-overlay">
               <div class="overlay-content">
-                <h3>App concept</h3>
-                <p>UI / UX</p>
+                <h3>Consultorio medico</h3>
+                <p>Python, Flask y SQLite para administracion integral</p>
                 <div class="overlay-icons">
-                  <a href="#" aria-label="Ver proyecto"><span class="portfolio-icon portfolio-icon-view"></span></a>
-                  <a href="#" aria-label="Abrir enlace"><span class="portfolio-icon portfolio-icon-link"></span></a>
+                  <a href="https://colom-bobbiesi.onrender.com/login" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
+                    <span class="portfolio-icon portfolio-icon-link"></span>
+                  </a>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #44351e, #ffcd4d);">Ecommerce</div>
+          <article class="project-card" data-tags="fullstack python flask sqlite produccion">
+            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #10322a, #00d1a8);">
+              Turnos medicos</div>
             <div class="project-overlay">
               <div class="overlay-content">
-                <h3>Storefront</h3>
-                <p>Development</p>
+                <h3>Turnos medicos</h3>
+                <p>Flask + SQLite, portal publico de turnos online</p>
                 <div class="overlay-icons">
-                  <a href="#" aria-label="Ver proyecto"><span class="portfolio-icon portfolio-icon-view"></span></a>
-                  <a href="#" aria-label="Abrir enlace"><span class="portfolio-icon portfolio-icon-link"></span></a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-thumb" style="--thumb-bg: linear-gradient(135deg, #17372f, #00d1a8);">SaaS</div>
-            <div class="project-overlay">
-              <div class="overlay-content">
-                <h3>Product site</h3>
-                <p>Web Design</p>
-                <div class="overlay-icons">
-                  <a href="#" aria-label="Ver proyecto"><span class="portfolio-icon portfolio-icon-view"></span></a>
-                  <a href="#" aria-label="Abrir enlace"><span class="portfolio-icon portfolio-icon-link"></span></a>
+                  <a href="https://consultorios-colom.onrender.com/" target="_blank" rel="noopener noreferrer" aria-label="Abrir proyecto">
+                    <span class="portfolio-icon portfolio-icon-link"></span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -954,41 +1227,127 @@
       </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="skills" class="services">
       <div class="container">
         <div class="section-heading">
-          <p class="section-kicker">Services</p>
-          <h2 class="section-title">Como puedo ayudarte</h2>
+          <p class="section-kicker">Skills</p>
+          <h2 class="section-title">Stack tecnologico</h2>
           <p class="section-text">
-            Servicios pensados para llevar una idea desde el concepto visual hasta una experiencia web lista para crecer.
+            Herramientas y tecnologias que uso habitualmente para construir backends, frontends y despliegues.
           </p>
         </div>
 
         <div class="services-grid">
           <article class="service-card">
-            <div class="service-icon service-icon-design" aria-hidden="true"></div>
-            <h3>Web Design</h3>
-            <p>Interfaces modernas, responsive y alineadas con la identidad de tu marca.</p>
+            <div class="service-icon service-icon-development" aria-hidden="true"></div>
+            <h3>Backend</h3>
+            <p>Node.js, Express, Python, Flask, REST APIs.</p>
+            <div class="stack-tags">
+              Pensado para reglas de negocio fuertes, validaciones y servicios bien acotados.
+            </div>
           </article>
           <article class="service-card">
-            <div class="service-icon service-icon-development" aria-hidden="true"></div>
-            <h3>Development</h3>
-            <p>Maquetacion y desarrollo front-end con foco en rendimiento y accesibilidad.</p>
+            <div class="service-icon service-icon-design" aria-hidden="true"></div>
+            <h3>Frontend</h3>
+            <p>React, Vue, JavaScript, TailwindCSS, HTML/CSS.</p>
+            <div class="stack-tags">Interfaces claras cuando el producto necesita panel o SPA liviana.</div>
           </article>
           <article class="service-card">
             <div class="service-icon service-icon-brand" aria-hidden="true"></div>
-            <h3>Brand Systems</h3>
-            <p>Sistemas visuales consistentes para landing pages, productos y contenido digital.</p>
+            <h3>Bases de datos</h3>
+            <p>MongoDB, SQLite, SQL.</p>
+            <div class="stack-tags">Modelado orientado al dominio y consultas eficientes.</div>
+          </article>
+          <article class="service-card">
+            <div class="service-icon service-icon-development" aria-hidden="true"></div>
+            <h3>Herramientas</h3>
+            <p>Git, GitHub, Render, Vite.</p>
+            <div class="stack-tags">Deploy continuo y colaboracion con control de versiones.</div>
           </article>
         </div>
       </div>
     </section>
+
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="contact-wrap section-heading contact-intro">
+        <p class="section-kicker">Contacto</p>
+        <h2 id="contact-title" class="section-title">Hablemos de tu proyecto</h2>
+        <p class="section-text">
+          Escribime por WhatsApp o deja un mensaje corto desde el formulario. En el sitio original el formulario abre WhatsApp con el texto que completes.
+        </p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-links">
+          <a href="https://github.com/Nikise23" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://wa.me/541162041909" target="_blank" rel="noopener noreferrer">WhatsApp directo</a>
+        </div>
+        <form id="contact-form" class="contact-form" autocomplete="off">
+          <div class="form-field">
+            <label for="cf-name">Nombre</label>
+            <input id="cf-name" name="name" type="text" required placeholder="Tu nombre">
+          </div>
+          <div class="form-field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required placeholder="Tu email">
+          </div>
+          <div class="form-field">
+            <label for="cf-msg">Mensaje</label>
+            <textarea id="cf-msg" name="message" rows="5" required placeholder="Contame sobre el proyecto"></textarea>
+          </div>
+          <button class="btn-submit" type="submit">Enviar por WhatsApp</button>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer id="contact" class="footer">
+  <footer class="footer">
     <div class="container">
-      <p>Preview visual independiente - portfolio-preview.html</p>
+      <p>2026 Nicolas Fernandez — Full Stack Developer. Portfolio consolidado desde el proyecto React anterior.</p>
     </div>
   </footer>
+
+  <script>
+    (() => {
+      const toggle = document.getElementById("nav-toggle");
+      document.querySelectorAll(".nav-item").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (toggle) toggle.checked = false;
+          document.querySelectorAll(".nav-item").forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+
+      document.querySelectorAll(".filter").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".filter").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const cat = btn.getAttribute("data-filter") || "all";
+          document.querySelectorAll(".project-card").forEach((card) => {
+            const tags = (card.getAttribute("data-tags") || "").split(/\s+/);
+            const show =
+              cat === "all" ||
+              (cat !== "produccion" && tags.includes(cat)) ||
+              (cat === "produccion" && tags.includes("produccion"));
+            card.classList.toggle("is-hidden", !show);
+          });
+        });
+      });
+
+      const form = document.getElementById("contact-form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const data = new FormData(form);
+          const text =
+            ["Hola, soy " + String(data.get("name") || ""), "Email: " + String(data.get("email") || ""), "", String(data.get("message") || "")].join(
+              "\n"
+            );
+          const phone = "541162041909";
+          const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text.trim());
+          window.open(url, "_blank", "noopener");
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
