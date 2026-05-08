@@ -56,11 +56,13 @@
     }
 
     .navbar {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 50;
       border-bottom: 1px solid var(--line);
-      background: rgba(17, 17, 32, 0.82);
+      background: rgba(15, 15, 30, 0.48);
       backdrop-filter: blur(16px);
     }
 
@@ -104,13 +106,13 @@
     }
 
     .nav-links a {
-      color: var(--muted);
+      color: var(--text);
       transition: color 0.2s ease;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
-      color: var(--green);
+      color: #2ecc71;
     }
 
     .mobile-menu {
@@ -123,7 +125,7 @@
       gap: 5px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      color: var(--green);
+      color: #2ecc71;
     }
 
     .mobile-menu span {
@@ -131,44 +133,59 @@
       height: 2px;
       border-radius: 999px;
       background: currentColor;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .mobile-menu span:first-child {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-menu span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu span:last-child {
+      transform: translateY(-7px) rotate(-45deg);
     }
 
     .hero {
       position: relative;
       isolation: isolate;
-      padding: 74px 0 82px;
+      min-height: 90vh;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      display: flex;
+      align-items: center;
+      padding: 130px 0 90px;
       overflow: hidden;
+      background-image: url('mi-foto.png');
+      background-position: center right;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent);
+      z-index: -1;
+      background: rgba(15, 15, 30, 0.55);
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      width: 560px;
-      height: 560px;
-      right: -180px;
-      top: 48px;
+      inset: 0;
       z-index: -1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 255, 136, 0.22), transparent 68%);
-      filter: blur(4px);
+      background:
+        linear-gradient(90deg, rgba(15, 15, 30, 0.92) 0%, rgba(15, 15, 30, 0.72) 36%, rgba(15, 15, 30, 0.14) 72%),
+        linear-gradient(0deg, rgba(15, 15, 30, 0.88) 0%, transparent 32%, rgba(15, 15, 30, 0.38) 100%);
     }
 
     .hero-grid {
-      display: grid;
-      gap: 48px;
-      align-items: center;
+      width: min(100% - 32px, var(--max-width));
+      margin-inline: auto;
+      padding-left: clamp(18px, 7vw, 80px);
     }
 
     .eyebrow {
@@ -185,164 +202,27 @@
       font-size: clamp(2.55rem, 11vw, 5.7rem);
       line-height: 0.95;
       letter-spacing: -0.07em;
+      color: #ffffff;
     }
 
     .hero-title span {
-      color: var(--green);
-      text-shadow: 0 0 26px rgba(0, 255, 136, 0.34);
+      color: #ffffff;
+      text-shadow: 0 0 26px rgba(0, 0, 0, 0.34);
     }
 
     .role-badge {
       width: fit-content;
       margin: 22px 0 26px;
       padding: 9px 16px;
-      border: 1px solid rgba(0, 255, 136, 0.38);
+      border: 1px solid rgba(46, 204, 113, 0.5);
       border-radius: 999px;
-      background: linear-gradient(90deg, rgba(0, 255, 136, 0.25), rgba(0, 255, 136, 0.08));
-      color: var(--green);
+      background: #2ecc71;
+      color: #06110c;
       font-size: 0.83rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      box-shadow: 0 0 28px rgba(0, 255, 136, 0.16);
-    }
-
-    .hero-copy {
-      max-width: 560px;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 32px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 20px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--text);
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .button.primary {
-      border-color: transparent;
-      background: var(--green);
-      color: #07120d;
-      box-shadow: 0 12px 34px rgba(0, 255, 136, 0.24);
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      border-color: rgba(0, 255, 136, 0.55);
-    }
-
-    .hero-visual {
-      position: relative;
-      width: min(100%, 500px);
-      min-height: 460px;
-      margin-inline: auto;
-    }
-
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: 8% -4% -6% 12%;
-      z-index: -1;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 62% 42%, rgba(0, 255, 136, 0.22), transparent 44%),
-        radial-gradient(circle at 42% 62%, rgba(64, 108, 255, 0.18), transparent 48%);
-      filter: blur(26px);
-      opacity: 0.95;
-    }
-
-    .photo-frame {
-      position: relative;
-      min-height: 520px;
-      overflow: visible;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .photo-frame::before,
-    .photo-frame::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .photo-frame::before {
-      width: 76%;
-      height: 76%;
-      right: -4%;
-      bottom: 0;
-      z-index: -1;
-      background: radial-gradient(circle, rgba(0, 255, 136, 0.2), transparent 64%);
-      filter: blur(20px);
-    }
-
-    .photo-frame::after {
-      inset: 8% -8% 4% auto;
-      width: 52%;
-      height: 88%;
-      z-index: -1;
-      border: 1px solid rgba(0, 255, 136, 0.16);
-      background: linear-gradient(90deg, rgba(0, 255, 136, 0.08), transparent);
-      border-radius: 50%;
-    }
-
-    .hero-photo {
-      position: absolute;
-      inset: auto 0 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center bottom;
-      mix-blend-mode: multiply;
-      filter: saturate(1.12) contrast(1.08) brightness(1.08);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 44%, #000 48%, rgba(0, 0, 0, 0.72) 64%, transparent 84%);
-      mask-image: radial-gradient(ellipse at 50% 44%, #000 48%, rgba(0, 0, 0, 0.72) 64%, transparent 84%);
-    }
-
-    .floating-card {
-      position: absolute;
-      right: -12px;
-      bottom: 30px;
-      max-width: 210px;
-      padding: 16px;
-      border: 1px solid rgba(0, 255, 136, 0.24);
-      border-radius: 18px;
-      background: rgba(17, 17, 32, 0.84);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.34);
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .floating-card strong {
-      display: block;
-      color: var(--green);
-      font-size: 1.7rem;
-      line-height: 1;
-    }
-
-    .floating-card span {
-      color: var(--muted);
-      font-size: 0.8rem;
+      box-shadow: 0 0 28px rgba(46, 204, 113, 0.28);
     }
 
     section {
@@ -744,17 +624,6 @@
       }
     }
 
-    @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
     @media (min-width: 680px) {
       .project-grid,
       .services-grid {
@@ -776,18 +645,10 @@
       }
 
       .hero {
-        min-height: calc(100vh - 76px);
-        display: grid;
+        min-height: 90vh;
+        display: flex;
         align-items: center;
-        padding: 86px 0;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1.08fr 0.92fr;
-      }
-
-      .hero-visual {
-        margin-right: 0;
+        padding: 130px 0 90px;
       }
 
       .about-card {
@@ -808,20 +669,9 @@
       }
 
       .hero {
-        padding-top: 54px;
-      }
-
-      .hero-visual {
-        min-height: 390px;
-      }
-
-      .photo-frame {
-        min-height: 380px;
-      }
-
-      .floating-card {
-        right: 10px;
-        bottom: 18px;
+        min-height: 90vh;
+        padding: 112px 0 72px;
+        background-position: 66% center;
       }
     }
   </style>
@@ -854,27 +704,8 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <p class="eyebrow">Personal Portfolio</p>
-          <h1 class="hero-title">I'm <span>Tu Nombre</span></h1>
-          <div class="role-badge">Developer / Designer</div>
-          <p class="hero-copy">
-            Creo experiencias digitales modernas, rapidas y centradas en el usuario.
-            Este preview muestra una direccion visual dark navy con acentos neon green,
-            preparada para evolucionar hacia el portfolio final.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#portfolio">Ver proyectos</a>
-            <a class="button" href="#contact">Contactar</a>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-label="Foto personal">
-          <div class="photo-frame">
-            <img class="hero-photo" src="mi-foto.png" alt="Foto personal de Tu Nombre">
-          </div>
-          <div class="floating-card">
-            <strong>5+</strong>
-            <span>Anios creando productos web</span>
-          </div>
+          <h1 class="hero-title">Soy <span>Tu Nombre</span></h1>
+          <div class="role-badge">Tu Rol / Especialidad</div>
         </div>
       </div>
     </section>
