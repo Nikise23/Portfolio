@@ -182,8 +182,8 @@
       z-index: 2;
       pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(15, 15, 30, 0.96) 0%, rgba(15, 15, 30, 0.82) 35%, rgba(15, 15, 30, 0.34) 67%, rgba(15, 15, 30, 0.18) 100%),
-        linear-gradient(180deg, rgba(15, 15, 30, 0.55) 0%, transparent 30%, rgba(15, 15, 30, 0.22) 100%);
+        linear-gradient(90deg, rgba(15, 15, 30, 0.95) 0%, rgba(15, 15, 30, 0.72) 36%, rgba(15, 15, 30, 0.16) 68%, rgba(15, 15, 30, 0.04) 100%),
+        linear-gradient(180deg, rgba(15, 15, 30, 0.42) 0%, transparent 34%, rgba(15, 15, 30, 0.18) 100%);
     }
 
     .hero-text {
@@ -228,18 +228,17 @@
 
     .hero-photo {
       position: absolute;
-      right: -2vw;
+      right: 0;
       bottom: 0;
       z-index: 1;
       width: auto;
-      height: 96%;
+      height: 94%;
       object-fit: contain;
       object-position: bottom right;
-      mix-blend-mode: multiply;
-      opacity: 0.96;
-      filter: saturate(1.08) contrast(1.08) brightness(0.9);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 10%, #000 34%, #000 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 10%, #000 34%, #000 100%);
+      opacity: 0.98;
+      filter: saturate(1.06) contrast(1.04) brightness(0.98);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.7) 12%, #000 24%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.7) 12%, #000 24%, #000 100%);
     }
 
     section {
@@ -673,37 +672,70 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-aspect-ratio: 3 / 4) {
       .hero {
-        flex-direction: column;
-        justify-content: flex-end;
-        min-height: 100vh;
-        padding-bottom: 40px;
+        align-items: flex-start;
+        min-height: 100svh;
       }
 
       .hero::after {
         background:
-          linear-gradient(180deg, rgba(15, 15, 30, 0.2) 0%, rgba(15, 15, 30, 0.72) 58%, rgba(15, 15, 30, 0.94) 100%),
-          linear-gradient(90deg, rgba(15, 15, 30, 0.76) 0%, rgba(15, 15, 30, 0.22) 100%);
+          linear-gradient(180deg, rgba(15, 15, 30, 0.36) 0%, rgba(15, 15, 30, 0.18) 34%, rgba(15, 15, 30, 0.86) 100%),
+          linear-gradient(90deg, rgba(15, 15, 30, 0.9) 0%, rgba(15, 15, 30, 0.42) 48%, rgba(15, 15, 30, 0.12) 100%);
       }
 
       .hero-photo {
-        position: absolute;
-        top: 0;
-        right: 0;
+        top: 76px;
+        right: clamp(-360px, -46vw, -150px);
         bottom: auto;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        opacity: 0.55;
-        -webkit-mask-image: none;
-        mask-image: none;
+        width: min(154vw, 1180px);
+        height: auto;
+        object-fit: contain;
+        object-position: top right;
+        opacity: 0.92;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
       }
 
       .hero-text {
+        position: absolute;
+        left: 0;
+        top: 38%;
+        width: min(88%, 560px);
+        padding-left: clamp(28px, 8vw, 80px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero::after {
+        background:
+          linear-gradient(180deg, rgba(15, 15, 30, 0.3) 0%, rgba(15, 15, 30, 0.18) 34%, rgba(15, 15, 30, 0.9) 100%),
+          linear-gradient(90deg, rgba(15, 15, 30, 0.88) 0%, rgba(15, 15, 30, 0.4) 52%, rgba(15, 15, 30, 0.12) 100%);
+      }
+
+      .hero-photo {
+        top: 76px;
+        right: clamp(-230px, -46vw, -150px);
+        bottom: auto;
+        width: 154vw;
+        height: auto;
+        object-fit: contain;
+        object-position: top right;
+        opacity: 0.9;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+      }
+
+      .hero-text {
+        position: absolute;
+        left: 0;
+        top: 40%;
         width: 90%;
-        padding-left: 20px;
+        padding-left: 28px;
         z-index: 3;
       }
     }
