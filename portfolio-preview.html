@@ -152,7 +152,8 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      height: 100vh;
+      height: clamp(500px, 56vw, 650px);
+      min-height: 500px;
       padding: 0;
       background:
         radial-gradient(circle at 78% 28%, rgba(255, 255, 255, 0.08), transparent 28%),
@@ -190,7 +191,7 @@
       position: relative;
       z-index: 3;
       width: 50%;
-      padding-left: 80px;
+      padding-left: clamp(34px, 7vw, 80px);
     }
 
     .label {
@@ -232,7 +233,7 @@
       bottom: 0;
       z-index: 1;
       width: auto;
-      height: 92%;
+      height: 96%;
       object-fit: contain;
       object-position: bottom right;
       opacity: 0.98;
@@ -674,41 +675,44 @@
 
     @media (max-aspect-ratio: 3 / 4) {
       .hero {
-        align-items: flex-start;
-        min-height: 100svh;
+        height: clamp(500px, 56vw, 620px);
+        min-height: 500px;
+        align-items: center;
       }
 
       .hero::after {
         background:
-          linear-gradient(180deg, rgba(15, 15, 30, 0.36) 0%, rgba(15, 15, 30, 0.18) 34%, rgba(15, 15, 30, 0.86) 100%),
-          linear-gradient(90deg, rgba(15, 15, 30, 0.9) 0%, rgba(15, 15, 30, 0.42) 48%, rgba(15, 15, 30, 0.12) 100%);
+          linear-gradient(90deg, rgba(15, 15, 30, 0.96) 0%, rgba(15, 15, 30, 0.72) 38%, rgba(15, 15, 30, 0.18) 72%, rgba(15, 15, 30, 0.06) 100%),
+          linear-gradient(180deg, rgba(15, 15, 30, 0.44) 0%, transparent 34%, rgba(15, 15, 30, 0.22) 100%);
       }
 
       .hero-photo {
-        top: 82px;
-        right: clamp(-130px, -12vw, -44px);
-        bottom: auto;
+        top: auto;
+        right: clamp(-36px, 2vw, 48px);
+        bottom: 0;
         width: auto;
-        height: min(54vh, 580px);
+        height: 92%;
         object-fit: contain;
-        object-position: top right;
-        opacity: 0.94;
-        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
-        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        object-position: bottom right;
+        opacity: 0.96;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 12%, #000 26%, #000 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 12%, #000 26%, #000 100%);
       }
 
       .hero-text {
-        position: absolute;
-        left: 0;
-        top: 43%;
-        width: min(88%, 560px);
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 50%;
         padding-left: clamp(28px, 8vw, 80px);
       }
     }
 
     @media (max-width: 768px) {
       .hero {
-        min-height: 100svh;
+        height: 560px;
+        min-height: 560px;
+        align-items: center;
       }
 
       .hero::after {
@@ -718,24 +722,24 @@
       }
 
       .hero-photo {
-        top: 82px;
-        right: clamp(-118px, -18vw, -52px);
-        bottom: auto;
+        top: auto;
+        right: -132px;
+        bottom: 0;
         width: auto;
-        height: 50vh;
+        height: 78%;
         object-fit: contain;
-        object-position: top right;
-        opacity: 0.94;
-        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
-        mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
+        object-position: bottom right;
+        opacity: 0.96;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 14%, #000 30%, #000 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 14%, #000 30%, #000 100%);
       }
 
       .hero-text {
-        position: absolute;
-        left: 0;
-        top: 44%;
-        width: 90%;
-        padding-left: 28px;
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 78%;
+        padding-left: 32px;
         z-index: 3;
       }
     }
@@ -746,12 +750,13 @@
       }
 
       .hero-photo {
-        right: -82px;
-        height: 46vh;
+        right: -154px;
+        height: 70%;
       }
 
       .hero-text {
-        top: 45%;
+        width: 82%;
+        padding-left: 30px;
       }
     }
   </style>
