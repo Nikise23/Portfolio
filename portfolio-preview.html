@@ -228,11 +228,11 @@
 
     .hero-photo {
       position: absolute;
-      right: 0;
+      right: clamp(0px, 4vw, 64px);
       bottom: 0;
       z-index: 1;
       width: auto;
-      height: 94%;
+      height: 92%;
       object-fit: contain;
       object-position: bottom right;
       opacity: 0.98;
@@ -685,14 +685,14 @@
       }
 
       .hero-photo {
-        top: 76px;
-        right: clamp(-360px, -46vw, -150px);
+        top: 82px;
+        right: clamp(-130px, -12vw, -44px);
         bottom: auto;
-        width: min(154vw, 1180px);
-        height: auto;
+        width: auto;
+        height: min(54vh, 580px);
         object-fit: contain;
         object-position: top right;
-        opacity: 0.92;
+        opacity: 0.94;
         -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
         mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
       }
@@ -700,7 +700,7 @@
       .hero-text {
         position: absolute;
         left: 0;
-        top: 38%;
+        top: 43%;
         width: min(88%, 560px);
         padding-left: clamp(28px, 8vw, 80px);
       }
@@ -718,14 +718,14 @@
       }
 
       .hero-photo {
-        top: 76px;
-        right: clamp(-230px, -46vw, -150px);
+        top: 82px;
+        right: clamp(-118px, -18vw, -52px);
         bottom: auto;
-        width: 154vw;
-        height: auto;
+        width: auto;
+        height: 50vh;
         object-fit: contain;
         object-position: top right;
-        opacity: 0.9;
+        opacity: 0.94;
         -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
         mask-image: linear-gradient(180deg, #000 0%, #000 76%, transparent 100%);
       }
@@ -733,7 +733,7 @@
       .hero-text {
         position: absolute;
         left: 0;
-        top: 40%;
+        top: 44%;
         width: 90%;
         padding-left: 28px;
         z-index: 3;
@@ -743,6 +743,15 @@
     @media (max-width: 420px) {
       .container {
         width: min(100% - 22px, var(--max-width));
+      }
+
+      .hero-photo {
+        right: -82px;
+        height: 46vh;
+      }
+
+      .hero-text {
+        top: 45%;
       }
     }
   </style>
@@ -777,7 +786,7 @@
         <h1>Soy [Tu Nombre]</h1>
         <span class="badge">Tu Rol / Especialidad</span>
       </div>
-      <img src="mi-foto.png" class="hero-photo" alt="foto">
+      <img src="mi-foto-hero.png" class="hero-photo" alt="foto">
     </section>
 
     <section id="about" class="about">
